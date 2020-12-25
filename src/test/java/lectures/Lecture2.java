@@ -27,6 +27,7 @@ public class Lecture2 {
     people.forEach(person -> System.out.println(person));
     people.stream().collect(Collectors.toList()).forEach(person -> System.out.println(person));
     people.stream().forEach(person -> System.out.println(person));
+    IntStream.iterate(0,i->i+3).limit(20).forEach(System.out::println);
 
   }
 

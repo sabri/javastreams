@@ -4,6 +4,7 @@ package lectures;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import beans.Car;
+import beans.Person;
 import com.google.common.collect.ImmutableList;
 import java.math.BigDecimal;
 import java.util.DoubleSummaryStatistics;
@@ -16,16 +17,27 @@ public class Lecture7 {
 
   @Test
   public void count() throws Exception {
+  List<Person> people = MockData.getPeople();
+    long female = people.stream().filter(person -> person.getGender().equalsIgnoreCase("female")).count();
+    System.out.println(female);
+
 
   }
 
   @Test
   public void min() throws Exception {
+    double min = MockData.getCars().stream().filter(car -> car.getColor().equalsIgnoreCase("yellow")).mapToDouble(Car::getPrice)
+            .min().getAsDouble();
+    System.out.println(min);
+
 
   }
 
   @Test
   public void max() throws Exception {
+    double max = MockData.getCars().stream().filter(car -> car.getColor().equalsIgnoreCase("yellow")).mapToDouble(Car::getPrice)
+            .max().getAsDouble();
+    System.out.println(max);
 
   }
 
@@ -33,6 +45,9 @@ public class Lecture7 {
   @Test
   public void average() throws Exception {
     List<Car> cars = MockData.getCars();
+    double averge = MockData.getCars().stream().mapToDouble(Car::getPrice)
+            .average().getAsDouble();
+    System.out.println(averge);
 
   }
 
